@@ -1,0 +1,34 @@
+version: '3'
+services:
+  indexer-app:
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    environment:
+      - WEB3_PROVIDER=https://mainnet.infura.io/v3/684e9de666ae439f94c3538670e56284
+      - WSS3_PROVIDER=wss://mainnet.infura.io/ws/v3/684e9de666ae439f94c3538670e56284
+      - MONGO_URL=mongodb://mongodb:27017/chzTokenDB
+      - CONTRACT_ADDRESS=0x3506424f91fd33084466f402d5d97f05f8e3b4af
+    links:
+      - mongodb
+    networks:
+      - app-net
+    volumes:
+      - ./src:/src
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - app-net
+
+networks:
+  app-net:
+    driver: bridge
+
+volumes:
+  mongodb_data:

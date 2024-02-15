@@ -1,0 +1,14 @@
+{
+    "name": "ethereum-indexer",
+    "version": "1.0.0",
+    "description": "Ethereum Indexer",
+    "main": "index.js",
+    "scripts": {
+      "start": "node ./src/index.js"
+    },
+    "dependencies": {
+      "express": "^4.17.1",
+      "mongoose": "^5.13.3",
+      "web3": "^1.5.2"
+    }
+}
